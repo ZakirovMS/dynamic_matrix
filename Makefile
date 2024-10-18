@@ -1,2 +1,2 @@
-mtx: main.cpp
-	g++ main.cpp -o mtx
+mtx: main.cpp mtx.cpp
+	g++ main.cpp mtx.cpp -o mtx
