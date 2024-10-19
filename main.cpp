@@ -16,7 +16,7 @@ int main()
   int ** mtx = nullptr;
   try
   {
-    int ** mtx = create(M, N);
+    mtx = create(M, N);
   }
   catch(const std::bad_alloc &e)
   {
@@ -34,4 +34,3 @@ int main()
   read(mtx, M, N);
   clean(mtx, M);
 }
-

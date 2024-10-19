@@ -5,18 +5,18 @@
 int ** create(size_t m, size_t n)
 {
   int ** mtx = new int * [m];
-  size_t created = 0;
+  size_t counter = 0;
 
   try
   {
-    for (; created < m; ++created)
+    for (; counter < m; ++counter)
     {
-      mtx[created] = new int [n];
+      mtx[counter] = new int[n];
     }
   }
   catch(const std::bad_alloc &e)
   {
-    clean(mtx, m);
+    clean(mtx, counter);
     throw;
   }
 
@@ -28,10 +28,10 @@ void clean(int ** mtx, size_t m)
 {
   for(size_t i = 0; i < m; ++i)
   {
-    delete[]mtx[i];
+    delete[] mtx[i];
   }
 
-  delete[]mtx;
+  delete[] mtx;
 }
 
 
@@ -41,7 +41,7 @@ void write(int ** mtx, size_t m, size_t n)
   {
     for (size_t j = 0; j < n; ++j)
     {
-      std::cin >> mtx[j][i];
+      std::cin >> mtx[i][j];
     }
   }
 }
@@ -54,7 +54,16 @@ void read(const int * const * mtx, size_t m, size_t n)
     for (size_t j = 0; j < n; ++ j)
     {
       std::cout << mtx[i][j];
+
+      if ((j+1) != n)
+      {
+        std::cout << " ";
+      }
+      else
+      {
+        std::cout << "\n";
+      }
+
     }
-    std:: cout << "\n";
   }
 }
